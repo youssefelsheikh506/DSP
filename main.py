@@ -1,29 +1,28 @@
 import tkinter as tk
+import GetPath , Ploting
 root = tk.Tk()
 root.title("DSP")
 root.geometry("600x600")
 
-instruction_label = tk.Label(root, text="Enter your Text file Name")
+instruction_label = tk.Label(root, text="Select Your File")
 instruction_label.pack(pady=10)
 
-path_entry = tk.Entry(root, width=30)
-path_entry.pack(pady=10)
-
-path = "C:/Users/lenovo/Desktop/DSP/Test/"
-file_name = ""
 lines = []
+Prop = []
+# 1) SignalType 2) IsPeriodic 3) Number of Samples
 
-def show_path():
-    file_name = path_entry.get()
-    print(path + file_name + ".txt")
-    with open (path + file_name + ".txt",'r') as file:
-        for line in file:
-            line = line.split("\n")
-            lines.append(line[0])
-        print(lines)
+def find_path():
+    GetPath.Get_Path(lines,Prop)
+
+def plot_button():
+
+    Ploting.Build_Plot(lines)
 
 # Create a button to trigger the greeting
-path_button = tk.Button(root,text="Enter",command=show_path)
-path_button.pack(pady=100)
+path_button = tk.Button(root,text="Browse",command=find_path)
+path_button.pack(pady=10)
+
+path_button = tk.Button(root,text="Plot",command=plot_button)
+path_button.pack(pady=10)
 
 root.mainloop()
