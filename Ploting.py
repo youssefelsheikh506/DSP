@@ -42,3 +42,25 @@ def Build_Plot(lines):
     Discrete.set_title('Digital Signal')
 
     plt.show()
+
+def Cos_plot(A,F,Fs,Theta,type):
+    x = np.arange(0,1,1/Fs)
+
+    if type == 0:
+        y = A * np.cos(2 * np.pi * F * x + Theta)
+    else:
+        y = A * np.sin(2 * np.pi * F * x + Theta)
+
+    x_y_Spline = make_interp_spline(x, y)
+    x_quad = np.linspace(x.min(), x.max(), 500)
+    y_quad = x_y_Spline(x_quad)
+
+    plt.plot(x_quad,y_quad)
+    plt.axhline(0,color='black',linewidth=1)
+    plt.axvline(0,color='black',linewidth=1)
+    plt.grid(True)
+    plt.xlabel("Time")
+    plt.ylabel("Amplitude")
+    plt.title("Sin-Signal" if type == 1 else "Cos-Signal")
+    plt.show()
+    

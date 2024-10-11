@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog
 
-def Get_Path(lines,Prop):
+def Read_Data(lines,Prop):
     path = filedialog.askopenfilename()
     if path:
         with open(path,'r') as file:
