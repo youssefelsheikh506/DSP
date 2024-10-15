@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 import Read_Data , Ploting
 root = tk.Tk()
 root.title("DSP")
@@ -24,10 +25,13 @@ def Sumbit_Button():
     F = float(AnalogFrequency.get())
     Fs = float(SamplingFrequency.get())
     Theta = float(PhaseShift.get())
-    Ploting.Cos_plot(A,F,Fs,Theta,var.get())
+    if Fs < 2 * F:
+         messagebox.showinfo("Error","The Fs Needs To Be Greater Than Two Times The F")
+         return
+    Ploting.Cos_Sin_plot(A,F,Fs,Theta,var.get())
 
 var = tk.IntVar()
-var.set(0)
+var.set(0)  
 
 Cos_Radio = tk.Radiobutton(root,text="Cos",variable=var,value=0)
 Sin_Radio = tk.Radiobutton(root,text="Sin",variable=var,value=1)

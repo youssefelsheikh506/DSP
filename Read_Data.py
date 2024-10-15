@@ -3,6 +3,7 @@ from tkinter import filedialog
 
 def Read_Data(lines,Prop):
     path = filedialog.askopenfilename()
+    print(path)
     if path:
         with open(path,'r') as file:
             for line in file:
@@ -16,3 +17,11 @@ def Read_Data(lines,Prop):
         del lines[0]
     else:
          print("Invalid")
+
+def Write_Data(x,y):
+    path = "C:/Users/lenovo/Desktop/DSP/Txtfiles/output.txt"
+    if path:
+        with open(path,'w') as file:
+            for i,j in zip(x,y):
+                row = str(i) + " " + str(j) + "\n"
+                file.write(row)
