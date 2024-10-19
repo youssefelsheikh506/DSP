@@ -1,7 +1,7 @@
 import tkinter as tk
 from Read_Data import Read_Data
 from Ploting import Build_Plot, Cos_Sin_plot
-from Task2 import Add_Sub_Two_Signals
+from Task2 import Add_Sub_Two_Signals,Normalize_Signal,Multi,accumulation_Signal
 
 def Generate(root, lines,Prop):
     var = tk.IntVar()
@@ -45,13 +45,47 @@ def Generate(root, lines,Prop):
                        ))
     Submit.pack(pady=10)
 
-    Add_Sub = tk.IntVar()
-    Add_Sub.set(0) 
+    # Add_Sub = tk.IntVar()
+    # Add_Sub.set(0) 
 
-    Add_Radio = tk.Radiobutton(root, text="Add", variable=Add_Sub, value=0)
-    Sub_Radio = tk.Radiobutton(root, text="Sub", variable=Add_Sub, value=1)
-    Add_Radio.pack()
-    Sub_Radio.pack()
+    # Add_Radio = tk.Radiobutton(root, text="Add", variable=Add_Sub, value=0)
+    # Sub_Radio = tk.Radiobutton(root, text="Sub", variable=Add_Sub, value=1)
+    # Add_Radio.pack()
+    # Sub_Radio.pack()
 
-    Add_Two_Signals = tk.Button(root, text="Add Or Sub Two Signals", command=lambda: Add_Sub_Two_Signals(Add_Sub.get()))
-    Add_Two_Signals.pack(pady=30)
+    # Add_Two_Signals = tk.Button(root, text="Add Or Sub Two Signals", command=lambda: Add_Sub_Two_Signals(Add_Sub.get()))
+    # Add_Two_Signals.pack(pady=30)
+
+    # Multi_button = tk.Button(root, text="Multi Or Squaring", command=lambda: Mult_Window())
+    # Multi_button.pack(pady=10)
+
+    # Normalize = tk.IntVar()
+    # Normalize.set(0) 
+
+    # zero_to_one = tk.Radiobutton(root, text="[(0) -> (1)]", variable=Normalize, value=0)
+    # negative_to_postive = tk.Radiobutton(root, text="[(-1) -> (1)]", variable=Normalize, value=1)
+    # zero_to_one.pack()
+    # negative_to_postive.pack()
+
+    # Normalize_button = tk.Button(root, text="Normalize", command=lambda: Normalize_Signal(Normalize.get()))
+    # Normalize_button.pack(pady=10)
+
+    # Accumlate_button = tk.Button(root, text="Accumulation", command=lambda: accumulation_Signal())
+    # Accumlate_button.pack(pady=10)
+
+def Mult_Window():
+
+    root = tk.Tk()
+    root.title("MUlti")
+    
+    plot_button = tk.Button(root, text="Genrate", command=lambda: Multi(value.get(),0))
+    plot_button.pack(pady=10)
+
+    Squaring_button = tk.Button(root, text="Square Signal", command=lambda: Multi(value.get(),1))
+    Squaring_button.pack(pady=10)
+
+    value = tk.Entry(root, width=30)
+    value.pack(pady=10)
+
+    root.geometry("400x400")
+    root.mainloop()
