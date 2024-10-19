@@ -1,4 +1,3 @@
-from tkinter import filedialog
 def SignalSamplesAreEqual(file_name,indices,samples):
     expected_indices=[]
     expected_samples=[]
@@ -18,10 +17,8 @@ def SignalSamplesAreEqual(file_name,indices,samples):
                 expected_samples.append(V2)
                 line = f.readline()
             else:
-                print("A")
                 break
                 
-    print(len(expected_samples),len(samples))
     if len(expected_samples)!=len(samples):
         print("Test case failed, your signal have different length from the expected one")
         return

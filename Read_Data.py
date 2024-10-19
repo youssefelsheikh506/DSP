@@ -1,22 +1,24 @@
 import tkinter as tk
 from tkinter import filedialog
 
-def Read_Data(lines,Prop):
+def Read_Data(lines,Prop=[]):
     path = filedialog.askopenfilename()
-    print(path)
+    lines.clear()
+    Prop.clear()
     if path:
         with open(path,'r') as file:
             for line in file:
                 line = line.split("\n")
-                lines.append(line[0])    
+                lines.append(line[0])
         Prop.append(lines[0])
-        Prop.append(lines[1])
+        Prop.append(lines[1])  
         Prop.append(lines[2])
         del lines[0]
         del lines[0]
         del lines[0]
     else:
          print("Invalid")
+    return lines
 
 def Write_Data(x,y):
     path = "C:/Users/lenovo/Desktop/DSP/Txtfiles/output.txt"

@@ -5,15 +5,19 @@ import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
 from scipy.interpolate import make_interp_spline
 
-def Build_Plot(lines):
+def Build_Plot(lines,check,X,Y):
     x = []
     y = []
-    for points in lines:
-        if len(points.split(' ')) != 2:
-            continue
-        point = points.split(' ')
-        x.append(float(point[0]))
-        y.append(float(point[1]))
+    if check:
+        x = X
+        y = Y
+    else:
+        for points in lines:
+            if len(points.split(' ')) != 2:
+                continue
+            point = points.split(' ')
+            x.append(float(point[0]))
+            y.append(float(point[1]))
 
     x = np.array(x)
     y = np.array(y)
