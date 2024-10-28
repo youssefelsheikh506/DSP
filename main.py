@@ -4,7 +4,7 @@ import Read_Data , Ploting
 import Gui
 root = tk.Tk()
 root.title("DSP")
-root.geometry("800x800")
+root.geometry("1000x1000")
 
 instruction_label = tk.Label(root, text="Select Your File")
 instruction_label.pack(pady=10)
