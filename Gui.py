@@ -3,6 +3,7 @@ from Read_Data import Read_Data
 from Ploting import Build_Plot, Cos_Sin_plot
 from Task2 import Add_Sub_Two_Signals,Normalize_Signal,Multi,accumulation_Signal
 from Task_3 import Quntiz
+from Task_4 import *
 
 def Generate(root, lines,Prop):
     var = tk.IntVar()
@@ -87,6 +88,12 @@ def Generate(root, lines,Prop):
 
     Quntaiz = tk.Button(root, text="Quntaiz", command=lambda: Quntiz(Lvl_or_bits.get(),value.get()))
     Quntaiz.pack(pady=10)
+
+    task_4 = tk.Button(root, text="DFT", command=lambda: DFT())
+    task_4.pack(pady=10)
+
+    task_idft = tk.Button(root, text="IDFT", command=lambda: IDFT())
+    task_idft.pack(pady=10)
 
 def Mult_Window():
 

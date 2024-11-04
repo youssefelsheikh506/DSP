@@ -11,6 +11,7 @@ instruction_label.pack(pady=10)
 
 lines = []
 Prop = []
+
 # 1) SignalType 2) IsPeriodic 3) Number of Samples
 
 Gui.Generate(root,lines,Prop)
