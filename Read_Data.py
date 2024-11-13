@@ -18,12 +18,13 @@ def Read_Data(lines,Prop=[]):
         del lines[0]
     else:
          print("Invalid")
+         
     return lines
 
-def Write_Data(x,y):
-    path = "C:/Users/lenovo/Desktop/DSP/Txtfiles/output.txt"
-    if path:
-        with open(path,'w') as file:
-            for i,j in zip(x,y):
-                row = str(i) + " " + str(j) + "\n"
-                file.write(row)
+# def Write_Data(x,y):
+#     path = "C:/Users/lenovo/Desktop/DSP/Txtfiles/output.txt"
+#     if path:
+#         with open(path,'w') as file:
+#             for i,j in zip(x,y):
+#                 row = str(i) + " " + str(j) + "\n"
+#                 file.write(row)

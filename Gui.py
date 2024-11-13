@@ -4,6 +4,7 @@ from Ploting import Build_Plot, Cos_Sin_plot
 from Task2 import Add_Sub_Two_Signals,Normalize_Signal,Multi,accumulation_Signal
 from Task_3 import Quntiz
 from Task_4 import *
+from Folding import *
 
 def Generate(root, lines,Prop):
     var = tk.IntVar()
@@ -95,6 +96,9 @@ def Generate(root, lines,Prop):
     task_idft = tk.Button(root, text="IDFT", command=lambda: IDFT())
     task_idft.pack(pady=10)
 
+    time_domain_button = tk.Button(root, text="Time Domain", command=lambda: Time_Domain(lines))
+    time_domain_button.pack(pady=10)
+
 def Mult_Window():
 
     root = tk.Tk()
@@ -111,3 +115,23 @@ def Mult_Window():
 
     root.geometry("400x400")
     root.mainloop()
+
+def Time_Domain(lines):
+    root = tk.Tk()
+    root.title("Time Domain")
+    root.geometry("800x800")
+
+    select_btn = tk.Button(root, text="Select File", command=lambda: Read_Data(lines,[]))
+    select_btn.pack(pady=10)
+
+    value = tk.Entry(root, width=30)
+    value.pack(pady=10)
+
+    fold_or_not = tk.Entry(root, width=30)
+    fold_or_not.pack(pady=10)
+
+    plot_button_1 = tk.Button(root, text="Fold and Sheift", command=lambda: fold_signal(lines,int(fold_or_not.get()),int(value.get())))
+    plot_button_1.pack(pady=10)
+
+    root.mainloop()
+    
