@@ -130,8 +130,21 @@ def Time_Domain(lines):
     fold_or_not = tk.Entry(root, width=30)
     fold_or_not.pack(pady=10)
 
-    plot_button_1 = tk.Button(root, text="Fold and Sheift", command=lambda: fold_signal(lines,int(fold_or_not.get()),int(value.get())))
+    plot_button_1 = tk.Button(root, text="Fold and Sheift", command=lambda: fold_signal(*Procces_file(lines),int(fold_or_not.get()),int(value.get())))
     plot_button_1.pack(pady=10)
+
+    Derivateive = tk.Button(root, text="Derivative Signal", command=lambda: DerivativeSignal())
+    Derivateive.pack(pady=10)
 
     root.mainloop()
     
+def Procces_file(lines):
+    x = []
+    y = []
+
+    for line in lines:
+        line = line.split("\n")
+        line = line[0].split(" ")
+        x.append(int(line[0]))
+        y.append(int(line[1]))
+    return x,y
