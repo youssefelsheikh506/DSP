@@ -136,6 +136,9 @@ def Time_Domain(lines):
     Derivateive = tk.Button(root, text="Derivative Signal", command=lambda: DerivativeSignal())
     Derivateive.pack(pady=10)
 
+    dct_bnt = tk.Button(root, text="DCT Signal", command=lambda: dct(*Procces_file(lines)))
+    dct_bnt.pack(pady=10)
+
     root.mainloop()
     
 def Procces_file(lines):
@@ -145,6 +148,6 @@ def Procces_file(lines):
     for line in lines:
         line = line.split("\n")
         line = line[0].split(" ")
-        x.append(int(line[0]))
-        y.append(int(line[1]))
+        x.append(float(line[0]))
+        y.append(float(line[1]))
     return x,y
