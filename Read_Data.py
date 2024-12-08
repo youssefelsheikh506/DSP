@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog
 
-def Read_Data(lines,Prop=[]):
+def Read_Data(lines=[],Prop=[]):
     path = filedialog.askopenfilename()
     lines.clear()
     Prop.clear()

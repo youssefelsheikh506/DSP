@@ -5,50 +5,33 @@ import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
 from scipy.interpolate import make_interp_spline
 
-def Build_Plot(lines,check,X,Y):
-    x = []
-    y = []
-    if check:
-        x = X
-        y = Y
-    else:
-        for points in lines:
-            if len(points.split(' ')) != 2:
-                continue
-            point = points.split(' ')
-            x.append(float(point[0]))
-            y.append(float(point[1]))
-
-    x = np.array(x)
-    y = np.array(y)
+def Build_Plot(X, Y):
+    # Convert inputs to numpy arrays (if they are not already)
+    x = np.array(X)
+    y = np.array(Y)
     
+    # Spline interpolation
     x_y_Spline = make_interp_spline(x, y)
-    x_quad = np.linspace(x.min(), x.max(), 500)
-    y_quad = x_y_Spline(x_quad)
+    x_smooth = np.linspace(x.min(), x.max(), 500)  # Generate smooth x values
+    y_smooth = x_y_Spline(x_smooth)  # Generate corresponding smooth y values
 
-    cubic_interpolation_model = interp1d(x, y, kind = "cubic")
-    x_cubic = np.linspace(x.min(), x.max(), 500)
-    y_cubic = cubic_interpolation_model(x_cubic)
+    # Optional: Cubic interpolation (use either this or spline, not both)
+    # cubic_interpolation_model = interp1d(x, y, kind="cubic")
+    # y_cubic = cubic_interpolation_model(x_smooth)
 
-    frame,(Continuous,Discrete) = plt.subplots(1,2,figsize=(10,4))
+    # Plot the smoothed signal
+    plt.plot(x_smooth, y_smooth, label='Smooth Curve')
+    
+    # Adding grid and axis labels
+    plt.axhline(0, color='black',linewidth=1)
+    plt.axvline(0, color='black',linewidth=1)
+    plt.grid(True)
+    plt.xlabel('Time')
+    plt.ylabel('Amplitude')
+    plt.title('Analog Signal')
 
-    Continuous.plot(x_quad,y_quad)
-    Continuous.axhline(0, color='black',linewidth=1)
-    Continuous.axvline(0, color='black',linewidth=1) 
-    Continuous.grid(True)
-    Continuous.set_xlabel('Time')
-    Continuous.set_ylabel('Amplitude')
-    Continuous.set_title('Analog Signal')
-
-    # Remove The Red Line on The X-axis (basefmt)
-    Discrete.stem(x, y,basefmt='none',linefmt='k-',markerfmt="C0o")
-    Discrete.axhline(0, color='black', linewidth=1)
-    Discrete.axvline(0, color='black', linewidth=1)
-    Discrete.grid(True)
-    Discrete.set_xlabel('Time')
-    Discrete.set_ylabel('Amplitude')
-    Discrete.set_title('Digital Signal')
-
+    # Show the plot
+    plt.legend()
     plt.show()
 
 def Cos_Sin_plot(A,F,Fs,Theta,type):
