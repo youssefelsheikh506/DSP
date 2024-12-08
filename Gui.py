@@ -167,11 +167,14 @@ def Time_Domain(lines,prop):
     Fir_filter = tk.Button(root, text="Fir_Filter", command=lambda: Fir_fillter())
     Fir_filter.pack(pady=10)
 
+    Resamble = tk.Button(root, text="ReSample", command=lambda: resamble())
+    Resamble.pack(pady=10)
+
     root.mainloop()
 
 def Fir_fillter():
     root = tk.Tk()
-    root.title("Time Domain")
+    root.title("FIR")
     root.geometry("800x800")
     # Label
     label = tk.Label(root, text="Select Filter Type: 0(Low)  1(High)  2(Band pass)  3(Band stop)", font=("Arial", 12))
@@ -220,6 +223,26 @@ def Fir_fillter():
 
     root.mainloop()
     
+def resamble():
+    root = tk.Tk()
+    root.title("ReSample")
+    root.geometry("800x800")
+
+    L_labl = tk.Label(root,text="L (UpSample)", font=("Arial", 10))
+    L_labl.pack(pady=10)
+    L = tk.Entry(root, width=30)
+    L.pack(pady=10)
+
+    M_lable = tk.Label(root,text="M (DownSample)", font=("Arial", 10))
+    M_lable.pack(pady=10)
+    M = tk.Entry(root, width=30)
+    M.pack(pady=10)
+
+    Draw_btn = tk.Button(root, text="Sample", command=lambda:resample(int(L.get()),int(M.get())))
+    Draw_btn.pack(pady=10)
+
+    root.mainloop()
+
 def Procces_file(lines):
     x = []
     y = []

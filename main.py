@@ -14,7 +14,6 @@ Prop = []
 
 # 1) SignalType 2) IsPeriodic 3) Number of Samples
 
-# Gui.Generate(root,lines,Prop)
-Gui.Fir_fillter()
+Gui.Generate(root,lines,Prop)
 
 root.mainloop() 
